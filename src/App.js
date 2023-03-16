@@ -1,31 +1,37 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import './App.css';
 import ImageGallery from './components/ImageGallery';
+// import dotenv from "dotenv";
 
-const API_KEY = "34459942-b0649ea6b1f026a3b68982766";
+// dotenv.config();
+
+const apiKey = "34459942-b0649ea6b1f026a3b68982766";
 
 function App() {
   const [fetchData, setFetchData] = useState([]);
+  const [query, setQuery] = useState("");
 
 
   const ref = useRef();
-  // const URL = "https://pixabay.com/api/?key=" + API_KEY + "&q=" + `apple`;
 
+
+
+  useEffect(() => {
+    if(query != ""){
+      const URL = `https://pixabay.com/api/?key=${apiKey}&q=${query}`;
+      fetch(URL)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.hits);
+          setFetchData(data.hits);
+        })
+    }
+  }, [query]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(ref.current.value);
-
-    const endpointURL = `https://pixabay.com/api/?key=34459942-b0649ea6b1f026a3b68982766&q=${ref.current.value}`;
-
-    fetch(endpointURL)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data.hits);
-        setFetchData(data.hits);
-      })
+    setQuery(ref.current.value);
   }
 
   
