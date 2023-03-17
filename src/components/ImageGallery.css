@@ -1,6 +1,10 @@
+.wrapper {
+    width: 100%;
+}
+
 .images-wrapper {
     display: grid;
-    grid-template-columns: 130px 130px 130px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     grid-gap: 160px;
     padding-right: 100px;
   }

@@ -1,11 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import './App.css';
 import ImageGallery from './components/ImageGallery';
-// import dotenv from "dotenv";
 
-// dotenv.config();
 
-const apiKey = "34459942-b0649ea6b1f026a3b68982766";
+const apiKey = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [fetchData, setFetchData] = useState([]);
