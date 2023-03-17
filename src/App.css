@@ -1,3 +1,7 @@
+* {
+  background-color: #00736D;
+}
+
 .container {
   width: 100%;
   max-width: 960px;
@@ -10,16 +14,23 @@
 }
 
 .container h2 {
+  color: #FFFFFF;
   margin-bottom: 12px;
 }
 
 .container input {
+  color: #FFFFFF;
   width: 100%;
   max-width: 360px;
   padding: 12px;
   margin-bottom: 24px;
   outline: none;
   box-sizing: border-box;
+  border: #FFFFFF 2px solid;
+}
+
+.container input::placeholder {
+  color: #DDDDDD;
 }
 
 @media (min-width: 768px) {
